@@ -1,0 +1,46 @@
+db:
+  svc:
+    name: mongo-headless
+    secret: mongo-secret
+
+  statefulset:
+    name: mongo
+    replicas: 1
+
+  container:
+    name: mongo
+    image: mongo:latest
+
+  volume:
+    name: mongo-data
+    mountPath: /data/db
+    storage: 200Mi
+
+  resources:
+    requests:
+      memory: "250Mi"
+      cpu: "200m"
+    limits:
+      memory: "500Mi"
+      cpu: "500m"
+
+app:
+  deployment:
+    name: pyapp-deployment
+    replicas: 2
+    image: pythonapp:5.0
+    secretRefName: pyapp-env-secret
+
+  service:
+    name: pyapp-service
+    type: ClusterIP
+    port: 5000
+    targetPort: 5000
+
+hpa:
+  name: pyapp-hpa
+  namespace: default
+  minReplicas: 2
+  maxReplicas: 5
+  targetDeployment: pyapp-deployment
+  cpuUtilization: 70

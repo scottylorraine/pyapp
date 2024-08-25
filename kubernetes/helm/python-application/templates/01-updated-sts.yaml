@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.db.svc.name }}
+spec:
+  clusterIP: None
+  selector:
+    app: mongo
+  ports:
+    - port: 27017
+      name: mongodb
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.db.statefulset.name }}
+spec:
+  serviceName: "{{ .Values.db.svc.name }}"
+  replicas: {{ .Values.db.statefulset.replicas }}
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: {{ .Values.db.container.name }}
+          image: {{ .Values.db.container.image }}
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: {{ .Values.db.volume.name }}
+              mountPath: {{ .Values.db.volume.mountPath }}
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.db.svc.secret }}
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.db.svc.secret }}
+                  key: MONGO_INITDB_ROOT_PASSWORD
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ .Values.db.volume.name }}
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: {{ .Values.db.volume.storage }}
+
