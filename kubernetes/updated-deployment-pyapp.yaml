@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,4 +23,18 @@ spec:
           envFrom:
             - secretRef:
                 name: pyapp-env-secret
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pyapp-service
+  labels:
+    app: pyapp
+spec:
+  type: ClusterIP
+  selector:
+    app: pyapp
+  ports:
+    - protocol: TCP
+      port: 5000       # Port on which the service is exposed
+      targetPort: 5000  # Port on the container
