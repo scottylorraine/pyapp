@@ -36,5 +36,5 @@ spec:
     app: pyapp
   ports:
     - protocol: TCP
-      port: 5000       # Port on which the service is exposed
-      targetPort: 5000  # Port on the container
+      port: 5000       
+      targetPort: 5000  
