@@ -2,7 +2,7 @@ My design stands out because it offers a robust and flexible deployment strategy
 
 I’ve included both manual deployment using Kubernetes manifests and automated deployment with Helm charts, making it versatile for different needs.
 
-This setup gives you precise control during development and testing while also allowing for smooth, repeatable deployments in production.
+This setup gives you precise control during development and testing while also allowing for smooth, repeatable deployments .
 
 The manual deployment lets users get hands-on with Kubernetes resources and make custom tweaks, while the Helm charts provide an easy, scalable solution for more complex deployments with less manual work.
 
