@@ -1,0 +1,27 @@
+My design stands out because it offers a robust and flexible deployment strategy.
+
+I’ve included both manual deployment using Kubernetes manifests and automated deployment with Helm charts, making it versatile for different needs.
+
+This setup gives you precise control during development and testing while also allowing for smooth, repeatable deployments in production.
+
+The manual deployment lets users get hands-on with Kubernetes resources and make custom tweaks, while the Helm charts provide an easy, scalable solution for more complex deployments with less manual work.
+
+
+SERVICE DISCOVERY IMPLEMENTATION
+
+I have implemented service discovery as per the request to enable seamless communication between applications in the Kubernetes cluster.
+It uses DNS to manage service names, allowing pods to connect using FQDNs like `service-name.namespace.svc.cluster.local`.
+This approach ensures reliable communication, even as underlying pod IPs change.
+
+
+INGRESS CONFIGURATION
+
+ Implemented an Ingress configuration file in the Kubernetes folder.
+ Manages external access to services within the cluster.
+ Defines rules for routing traffic to the appropriate services based on the request URL.
+ To use the Ingress configuration:
+     Add the following entry to your local DNS hosts file:
+     Windows "C:\Windows\System32\drivers\etc\hosts"
+     Linux "/etc/hosts"
+     Format "IP_ADDRESS DOMAIN_NAME"
+     Example "192.168.1.100 pyadd.local" (replace with the actual IP address and domain name specified in the Ingress file).
