@@ -10,7 +10,7 @@ The manual deployment lets users get hands-on with Kubernetes resources and make
 SERVICE DISCOVERY IMPLEMENTATION
 
 I have implemented service discovery as per the request to enable seamless communication between applications in the Kubernetes cluster.
-It uses DNS to manage service names, allowing pods to connect using FQDNs like `service-name.namespace.svc.cluster.local`.
+It uses DNS to manage service names, allowing pods to connect using `service-name.namespace.svc.cluster.local`.
 This approach ensures reliable communication, even as underlying pod IPs change.
 
 
