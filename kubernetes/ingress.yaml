@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
-  ingressClassName: nginx  # Use the 'nginx' ingress class for my NGINX Ingress controller
+  ingressClassName: nginx  #  The 'nginx' ingress class for my NGINX Ingress controller
   rules:
   - host: pyapp.local
     http:
