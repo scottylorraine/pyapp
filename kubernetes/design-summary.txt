@@ -13,7 +13,7 @@ I have implemented service discovery as per the request to enable seamless commu
 It uses DNS to manage service names, allowing pods to connect using `service-name.namespace.svc.cluster.local`.
 This approach ensures reliable communication, even as underlying pod IPs change.
 
-
+----
 INGRESS CONFIGURATION
 
  Implemented an Ingress configuration file in the Kubernetes folder.
