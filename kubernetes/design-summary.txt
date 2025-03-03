@@ -6,7 +6,7 @@ This setup gives you precise control during development and testing while also a
 
 The manual deployment lets users get hands-on with Kubernetes resources and make custom tweaks, while the Helm charts provide an easy, scalable solution for more complex deployments with less manual work.
 
-
+---
 SERVICE DISCOVERY IMPLEMENTATION
 
 I have implemented service discovery as per the request to enable seamless communication between applications in the Kubernetes cluster.
